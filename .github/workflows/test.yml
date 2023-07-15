@@ -13,7 +13,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Unit Tests
-        run: pnpm test --watchAll=false
+        run: pnpm test
       - name: E2E Tests
         uses: cypress-io/github-action@v4
         with:
