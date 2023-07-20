@@ -11,6 +11,18 @@ dependencies:
   '@testing-library/react':
     specifier: ^13.4.0
     version: 13.4.0(react-dom@18.2.0)(react@18.2.0)
+  '@types/jest':
+    specifier: ^29.5.3
+    version: 29.5.3
+  '@types/node':
+    specifier: ^20.4.2
+    version: 20.4.2
+  '@types/react':
+    specifier: ^18.2.15
+    version: 18.2.15
+  '@types/react-dom':
+    specifier: ^18.2.7
+    version: 18.2.7
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -20,6 +32,9 @@ dependencies:
   react-scripts:
     specifier: 5.0.1
     version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.44.0)(react@18.2.0)(typescript@5.1.6)
+  typescript:
+    specifier: ^5.1.6
+    version: 5.1.6
   web-vitals:
     specifier: ^2.1.4
     version: 2.1.4
@@ -2558,7 +2573,6 @@ packages:
 
   /@types/node@20.4.2:
     resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
-    dev: false
 
   /@types/parse-json@4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -2691,7 +2705,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 14.18.53
+      '@types/node': 20.4.2
     dev: true
     optional: true
 
