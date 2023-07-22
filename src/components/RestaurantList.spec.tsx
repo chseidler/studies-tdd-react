@@ -1,4 +1,6 @@
-import {render} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
+import '@testing-library/jest-dom';
+
 import RestaurantList from './RestaurantList';
 
 describe('RestaurantList', () => {
@@ -8,5 +10,18 @@ describe('RestaurantList', () => {
     render(<RestaurantList loadRestaurants={loadRestaurants} />);
 
     expect(loadRestaurants).toHaveBeenCalled();
+  });
+
+  it('displays the restaurants', () => {
+    const noop = () => {};
+    const restaurants = [
+      {id: 1, name: 'Sushi Place'},
+      {id: 2, name: 'Pizza Place'},
+    ];
+
+    render(<RestaurantList loadRestaurants={noop} restaurants={restaurants} />);
+
+    expect(screen.getByText('Sushi Place')).toBeInTheDocument();
+    expect(screen.getByText('Pizza Place')).toBeInTheDocument();
   });
 });
