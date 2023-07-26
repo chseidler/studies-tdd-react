@@ -1,12 +1,13 @@
 import {useEffect} from 'react';
 import {TRestaurantResponse} from '../models/restaurants.model';
+import {connect} from 'react-redux';
 
 interface IProps {
   loadRestaurants: () => void;
   restaurants: TRestaurantResponse[];
 }
 
-export default function RestaurantList({loadRestaurants, restaurants}: IProps) {
+export function RestaurantList({loadRestaurants, restaurants}: IProps) {
   useEffect(() => {
     loadRestaurants();
   }, [loadRestaurants]);
@@ -19,3 +20,9 @@ export default function RestaurantList({loadRestaurants, restaurants}: IProps) {
     </ul>
   );
 }
+
+const mapStateToProps = (state: any) => ({
+  restaurants: state.restaurants.records,
+});
+
+export default connect(mapStateToProps)(RestaurantList);

@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import RestaurantList from './RestaurantList';
+import {RestaurantList} from './RestaurantList';
 import {TRestaurantResponse} from '../models/restaurants.model';
 
 describe('RestaurantList', () => {

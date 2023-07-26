@@ -1,9 +1,11 @@
+import store from './store';
 import RestaurantScreen from './components/RestaurantScreen';
+import {Provider} from 'react-redux';
 
 export default function App() {
   return (
-    <div>
+    <Provider store={store}>
       <RestaurantScreen />
-    </div>
+    </Provider>
   );
 }
