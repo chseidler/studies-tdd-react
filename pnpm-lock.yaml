@@ -20,6 +20,9 @@ dependencies:
   redux:
     specifier: ^4.2.1
     version: 4.2.1
+  redux-thunk:
+    specifier: ^2.4.2
+    version: 2.4.2(redux@4.2.1)
   web-vitals:
     specifier: ^2.1.4
     version: 2.1.4
@@ -9036,6 +9039,14 @@ packages:
       indent-string: 4.0.0
       strip-indent: 3.0.0
     dev: true
+
+  /redux-thunk@2.4.2(redux@4.2.1):
+    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: 4.2.1
+    dev: false
 
   /redux@4.2.1:
     resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}

@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import {TRestaurantResponse} from '../models/restaurants.model';
 import {connect} from 'react-redux';
+import {loadRestaurants} from '../store/restaurants/actions';
 
 interface IProps {
   loadRestaurants: () => void;
@@ -25,4 +26,6 @@ const mapStateToProps = (state: any) => ({
   restaurants: state.restaurants.records,
 });
 
-export default connect(mapStateToProps)(RestaurantList);
+const mapDispatchToProps = {loadRestaurants};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantList);
