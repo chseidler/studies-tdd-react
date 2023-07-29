@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {TRestaurantResponse} from '../models/restaurants.model';
 import {connect} from 'react-redux';
 import {loadRestaurants} from '../store/restaurants/actions';
+import {List, ListItem, ListItemText} from '@mui/material';
 
 interface IProps {
   loadRestaurants: () => void;
@@ -14,11 +15,13 @@ export function RestaurantList({loadRestaurants, restaurants}: IProps) {
   }, [loadRestaurants]);
 
   return (
-    <ul>
+    <List>
       {restaurants.map(restaurant => (
-        <li key={restaurant.id}>{restaurant.name}</li>
+        <ListItem key={restaurant.id}>
+          <ListItemText>{restaurant.name}</ListItemText>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 }
 
