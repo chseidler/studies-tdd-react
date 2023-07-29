@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {STORE_RESTAURANTS} from './actions';
+import {START_LOADING, STORE_RESTAURANTS} from './actions';
 
 function records(state = [], action: any) {
   switch (action.type) {
@@ -10,6 +10,18 @@ function records(state = [], action: any) {
   }
 }
 
+function loading(state = false, action: any) {
+  switch (action.type) {
+    case START_LOADING:
+      return true;
+    case STORE_RESTAURANTS:
+      return false;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   records,
+  loading,
 });
