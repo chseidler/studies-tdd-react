@@ -42,6 +42,30 @@ describe('restaurants', () => {
     });
   });
 
+  describe('when loading fails', () => {
+    let store;
+
+    beforeEach(() => {
+      const api = {
+        loadRestaurants: () => Promise.reject(),
+      };
+
+      const initalState = {};
+
+      store = legacy_createStore(
+        restaurantsReducer,
+        initalState,
+        applyMiddleware(thunk.withExtraArgument(api)),
+      );
+
+      return store.dispatch(loadRestaurants());
+    });
+
+    it('sets an error flag', () => {
+      expect(store.getState().loadError).toEqual(true);
+    });
+  });
+
   describe('while loading', () => {
     it('sets a loading flag', () => {
       const api = {
