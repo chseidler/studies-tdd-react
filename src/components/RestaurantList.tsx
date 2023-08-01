@@ -2,7 +2,13 @@ import {useEffect} from 'react';
 import {TRestaurantResponse} from '../models/restaurants.model';
 import {connect} from 'react-redux';
 import {loadRestaurants} from '../store/restaurants/actions';
-import {List, ListItem, ListItemText, CircularProgress} from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  CircularProgress,
+  Alert,
+} from '@mui/material';
 
 interface IProps {
   loadRestaurants: () => void;
@@ -22,6 +28,7 @@ export function RestaurantList({
   return (
     <>
       {loading && <CircularProgress />}
+      <Alert severity="error">Restaurants could not be loaded.</Alert>
       <List>
         {restaurants.map(restaurant => (
           <ListItem key={restaurant.id}>
