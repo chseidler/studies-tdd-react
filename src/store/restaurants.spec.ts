@@ -43,7 +43,7 @@ describe('restaurants', () => {
   });
 
   describe('when loading fails', () => {
-    let store;
+    let store: any;
 
     beforeEach(() => {
       const api = {
@@ -85,16 +85,24 @@ describe('restaurants', () => {
   });
 
   describe('initially', () => {
-    it('does not have the loading flag set', () => {
+    let store: any;
+
+    beforeEach(() => {
       const initalState = {};
 
-      const store = legacy_createStore(
+      store = legacy_createStore(
         restaurantsReducer,
         initalState,
         applyMiddleware(thunk),
       );
+    });
 
+    it('does not have the loading flag set', () => {
       expect(store.getState().loading).toEqual(false);
+    });
+
+    it('does not have the error flag set', () => {
+      expect(store.getState().loadError).toEqual(false);
     });
   });
 });
