@@ -55,5 +55,12 @@ describe('RestaurantList', () => {
         screen.getByText('Restaurants could not be loaded.'),
       ).toBeInTheDocument();
     });
+
+    it('does not display the error message', () => {
+      renderComponent();
+      expect(
+        screen.queryByText('Restaurants could not be loaded.'),
+      ).not.toBeInTheDocument();
+    });
   });
 });
