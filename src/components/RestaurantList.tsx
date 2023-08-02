@@ -47,6 +47,7 @@ export function RestaurantList({
 const mapStateToProps = (state: any) => ({
   restaurants: state.restaurants.records,
   loading: state.restaurants.loading,
+  loadError: state.restaurants.loadError,
 });
 
 const mapDispatchToProps = {loadRestaurants};

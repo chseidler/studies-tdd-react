@@ -11,12 +11,14 @@ describe('RestaurantList', () => {
   ];
   let loadRestaurants: jest.Mock<any, any, any>;
   const loading = false;
+  const loadError = false;
 
   function renderComponent(propOverrides = {}) {
     const props = {
       loadRestaurants: jest.fn().mockName('loadRestaurants'),
       restaurants,
       loading,
+      loadError,
       ...propOverrides,
     };
     loadRestaurants = props.loadRestaurants;
