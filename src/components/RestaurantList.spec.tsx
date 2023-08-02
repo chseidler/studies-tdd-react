@@ -10,16 +10,20 @@ describe('RestaurantList', () => {
     {id: 2, name: 'Pizza Place'},
   ];
   let loadRestaurants: jest.Mock<any, any, any>;
+  const loading = false;
+  const loadError = false;
 
-  function renderComponent() {
-    loadRestaurants = jest.fn().mockName('loadRestaurants');
+  function renderComponent(propOverrides = {}) {
+    const props = {
+      loadRestaurants: jest.fn().mockName('loadRestaurants'),
+      restaurants,
+      loading,
+      loadError,
+      ...propOverrides,
+    };
+    loadRestaurants = props.loadRestaurants;
 
-    render(
-      <RestaurantList
-        loadRestaurants={loadRestaurants}
-        restaurants={restaurants}
-      />,
-    );
+    render(<RestaurantList {...props} />);
   }
 
   it('loads restaurants on first render', () => {
@@ -33,5 +37,32 @@ describe('RestaurantList', () => {
 
     expect(screen.getByText('Sushi Place')).toBeInTheDocument();
     expect(screen.getByText('Pizza Place')).toBeInTheDocument();
+  });
+
+  describe('when loading succesds', () => {
+    it('displays the loading indicator while loading', () => {
+      renderComponent({loading: true});
+      expect(screen.getByRole('progressbar')).toBeInTheDocument();
+    });
+
+    it('does not display the loading indicator while loading', () => {
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    });
+  });
+
+  describe('when loading fails', () => {
+    it('displays the error message', () => {
+      renderComponent({loadError: true});
+      expect(
+        screen.getByText('Restaurants could not be loaded.'),
+      ).toBeInTheDocument();
+    });
+
+    it('does not display the error message', () => {
+      renderComponent();
+      expect(
+        screen.queryByText('Restaurants could not be loaded.'),
+      ).not.toBeInTheDocument();
+    });
   });
 });
