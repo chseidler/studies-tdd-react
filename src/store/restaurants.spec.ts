@@ -67,20 +67,28 @@ describe('restaurants', () => {
   });
 
   describe('while loading', () => {
-    it('sets a loading flag', () => {
+    let store: any;
+
+    beforeEach(() => {
       const api = {
         loadRestaurants: () => new Promise(() => {}),
       };
-      const initalState = {};
-      const store = legacy_createStore(
+      const initalState = {loadError: true};
+      store = legacy_createStore(
         restaurantsReducer,
         initalState,
         applyMiddleware(thunk.withExtraArgument(api)),
       );
 
       store.dispatch(loadRestaurants());
+    });
 
+    it('sets a loading flag', () => {
       expect(store.getState().loading).toEqual(true);
+    });
+
+    it('clears the error flag', () => {
+      expect(store.getState().loadError).toEqual(false);
     });
   });
 

@@ -27,6 +27,8 @@ function loading(state = false, action: any) {
 
 function loadError(state = false, action: any) {
   switch (action.type) {
+    case START_LOADING:
+      return false;
     case RECORD_LOADING_ERROR:
       return true;
     default:
