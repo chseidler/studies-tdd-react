@@ -1,6 +1,7 @@
 import {Card, CardContent, Typography} from '@mui/material';
 
 import RestaurantList from './RestaurantList';
+import NewRestaurantForm from './NewRestaurantForm';
 
 export default function RestaurantScreen() {
   return (
@@ -8,6 +9,7 @@ export default function RestaurantScreen() {
       <CardContent>
         <Typography variant="h5">Restaurants</Typography>
         <RestaurantList />
+        <NewRestaurantForm />
       </CardContent>
     </Card>
   );
