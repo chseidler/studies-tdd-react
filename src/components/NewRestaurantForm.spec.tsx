@@ -18,7 +18,7 @@ describe('NewRestaurantForm', () => {
     async function fillInForm() {
       renderComponent();
       await user.type(
-        screen.getByPlaceholderText('Ádd Restaurant'),
+        screen.getByPlaceholderText('Add Restaurant'),
         restaurantName,
       );
       await user.click(screen.getByText('Add'));
