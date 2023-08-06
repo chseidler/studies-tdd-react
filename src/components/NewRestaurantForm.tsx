@@ -1,5 +1,7 @@
 import {Button, TextField} from '@mui/material';
 import {useState} from 'react';
+import {createRestaurant} from '../store/restaurants/actions';
+import {connect} from 'react-redux';
 
 interface IProps {
   createRestaurant: any;
@@ -8,7 +10,7 @@ interface IProps {
 export function NewRestaurantForm({createRestaurant}: IProps) {
   const [name, setName] = useState('');
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     createRestaurant(name);
   }
@@ -29,4 +31,7 @@ export function NewRestaurantForm({createRestaurant}: IProps) {
   );
 }
 
-export default NewRestaurantForm;
+const mapStateToProps = null;
+const mapDispatchToProps = {createRestaurant};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewRestaurantForm);

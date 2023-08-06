@@ -21,3 +21,8 @@ const storeRestaurants = (records: any) => ({
 });
 
 const recordLoadingError = () => ({type: RECORD_LOADING_ERROR});
+
+export const createRestaurant =
+  (name: string) => async (dispatch: any, getState: any, api: any) => {
+    await api.createRestaurant(name);
+  };
