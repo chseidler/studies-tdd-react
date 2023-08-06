@@ -10,9 +10,10 @@ interface IProps {
 export function NewRestaurantForm({createRestaurant}: IProps) {
   const [name, setName] = useState('');
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    createRestaurant(name);
+    await createRestaurant(name);
+    setName('');
   }
 
   return (
