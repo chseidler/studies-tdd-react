@@ -14,11 +14,13 @@ export function NewRestaurantForm({createRestaurant}: IProps) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!name) {
+    if (name) {
+      setValidationError(false);
+      await createRestaurant(name);
+    } else {
       setValidationError(true);
     }
 
-    await createRestaurant(name);
     setName('');
   }
 
