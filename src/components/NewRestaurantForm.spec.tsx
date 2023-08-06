@@ -4,6 +4,7 @@ import {NewRestaurantForm} from './NewRestaurantForm';
 
 describe('NewRestaurantForm', () => {
   const restaurantName = 'Sushi Place';
+  const requiredError = 'Name is required';
 
   let user: any;
   let createRestaurant: any;
@@ -32,6 +33,31 @@ describe('NewRestaurantForm', () => {
     it('clears the name', async () => {
       await fillInForm();
       expect(screen.getByPlaceholderText('Add Restaurant')).toHaveValue('');
+    });
+
+    it('does not display a validation error', async () => {
+      await fillInForm();
+      expect(screen.queryByText(requiredError)).not.toBeInTheDocument();
+    });
+  });
+
+  describe('initially', () => {
+    it('does not display a validation error', () => {
+      renderComponent();
+      expect(screen.queryByText(requiredError)).not.toBeInTheDocument();
+    });
+  });
+
+  describe('when empty', () => {
+    async function submitEmptyForm() {
+      renderComponent();
+
+      await user.click(screen.getByText('Add'));
+    }
+
+    it('displays a validation error', async () => {
+      await submitEmptyForm();
+      expect(screen.getByText(requiredError)).toBeInTheDocument();
     });
   });
 });
