@@ -10,22 +10,34 @@ interface IProps {
 export function NewRestaurantForm({createRestaurant}: IProps) {
   const [name, setName] = useState('');
   const [validationError, setValidationError] = useState(false);
+  const [serverError, setServerError] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (name) {
       setValidationError(false);
-      await createRestaurant(name);
+      setServerError(false);
+
+      try {
+        await createRestaurant(name);
+
+        setName('');
+      } catch {
+        setServerError(true);
+      }
     } else {
       setValidationError(true);
     }
-
-    setName('');
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      {serverError && (
+        <Alert severity="error">
+          The restaurant could not be saved. Please try again.
+        </Alert>
+      )}
       {validationError && <Alert severity="error">Name is required</Alert>}
       <TextField
         value={name}
